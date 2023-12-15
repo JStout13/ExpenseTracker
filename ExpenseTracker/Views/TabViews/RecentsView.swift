@@ -6,14 +6,18 @@
 //
 
 import SwiftUI
+import SwiftData
 
 struct RecentsView: View {
+    @Environment(\.modelContext) private var modelContext
     @AppStorage("userName") private var userName: String = ""
     @State private var startDate: Date = .now.startOfMonth
     @State private var endDate: Date = .now.endOfMonth
     @State private var showFilterView: Bool = false
     @State private var selectedCategory: Category = .expense
     @Namespace private var animation
+    @Query(sort: [SortDescriptor(\Transaction.dateAdded, order: .reverse)], animation: .snappy) private var transactions: [Transaction]
+    
     var body: some View {
         GeometryReader {
             let size = $0.size
@@ -31,14 +35,18 @@ struct RecentsView: View {
                             })
                             .hSpacing(.leading)
 
-                            CardView(income: 2039, expense: 4098)
+                            CardView(income: 1000, expense: 98)
                             
                             CustomSegmentedControl()
                                 .padding(.bottom, 10)
                             
-                            ForEach(sampleTransactions.filter({ $0.category == selectedCategory.rawValue })) { transaction in
-                                TransactionCardView(transaction: transaction)
-                                    .animation(.none, value: selectedCategory)
+                            ForEach(transactions) { transaction in
+                                NavigationLink {
+                                    NewExpenseView(editTransaction: transaction)
+                                } label: {
+                                    TransactionCardView(transaction: transaction)
+                                }
+                                .buttonStyle(.plain)
                             }
                         } header: {
                             HeaderView(size)
@@ -88,7 +96,7 @@ struct RecentsView: View {
             Spacer(minLength: 0)
             
             NavigationLink {
-                
+                NewExpenseView()
             } label: {
                 Image(systemName: "plus")
                     .font(.title3)

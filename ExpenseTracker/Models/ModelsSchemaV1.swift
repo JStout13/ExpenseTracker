@@ -24,7 +24,7 @@ enum ModelsSchemaV1: VersionedSchema {
         var category: String
         var tintColor: String
         
-        init(title: String, remarks: String, amount: Double, dateAdded: Date, category: Category, tintColor: TintColor) {
+        init(title: String = "", remarks: String = "", amount: Double = 0.0, dateAdded: Date = .now, category: Category = .income, tintColor: TintColor = .init(color: "Green", value: .green)) {
             self.title = title
             self.remarks = remarks
             self.amount = amount
@@ -33,8 +33,19 @@ enum ModelsSchemaV1: VersionedSchema {
             self.tintColor = tintColor.color
         }
         
+        @Transient
         var color: Color {
             return tints.first(where: { $0.color == tintColor })?.value ?? appTint
+        }
+        
+        @Transient
+        var tint: TintColor? {
+            return tints.first(where: { $0.color == tintColor })
+        }
+        
+        @Transient
+        var rawCategory: Category? {
+            return Category.allCases.first(where: { category == $0.rawValue })
         }
     }
 }

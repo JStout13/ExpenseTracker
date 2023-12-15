@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		70196BD02B2C809F000A3784 /* NewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70196BCF2B2C809F000A3784 /* NewExpenseView.swift */; };
 		701B2AB72B2A3A870065BBB8 /* ModelsSchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701B2AB62B2A3A870065BBB8 /* ModelsSchemaV1.swift */; };
 		701B2AB92B2A3D870065BBB8 /* DatabaseMigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701B2AB82B2A3D870065BBB8 /* DatabaseMigrationPlan.swift */; };
 		703BD9122B27D63100C94EA9 /* ExpenseTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703BD9112B27D63100C94EA9 /* ExpenseTrackerApp.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		70196BCF2B2C809F000A3784 /* NewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpenseView.swift; sourceTree = "<group>"; };
 		701B2AB62B2A3A870065BBB8 /* ModelsSchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsSchemaV1.swift; sourceTree = "<group>"; };
 		701B2AB82B2A3D870065BBB8 /* DatabaseMigrationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMigrationPlan.swift; sourceTree = "<group>"; };
 		703BD90E2B27D63100C94EA9 /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -111,10 +113,11 @@
 			isa = PBXGroup;
 			children = (
 				703BD9132B27D63100C94EA9 /* ContentView.swift */,
+				703BD9212B27D68C00C94EA9 /* IntroView.swift */,
 				7046B4942B293E7E0099EC76 /* LockView.swift */,
+				70196BCF2B2C809F000A3784 /* NewExpenseView.swift */,
 				703BD9322B27E1BD00C94EA9 /* Helpers */,
 				703BD93B2B27FBED00C94EA9 /* TabViews */,
-				703BD9212B27D68C00C94EA9 /* IntroView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -246,6 +249,7 @@
 				703BD9252B27D83D00C94EA9 /* Constants.swift in Sources */,
 				703BD9342B27E1CC00C94EA9 /* SwipeAction.swift in Sources */,
 				701B2AB92B2A3D870065BBB8 /* DatabaseMigrationPlan.swift in Sources */,
+				70196BD02B2C809F000A3784 /* NewExpenseView.swift in Sources */,
 				703BD92D2B27E02200C94EA9 /* View+Extensions.swift in Sources */,
 				703BD9292B27DED200C94EA9 /* Category.swift in Sources */,
 				703BD9312B27E12200C94EA9 /* TintColor.swift in Sources */,
