@@ -125,7 +125,6 @@ struct LockView<Content: View>: View {
                 .font(.title.bold())
                 .frame(maxWidth: .infinity)
                 .overlay(alignment: .leading) {
-                    /// Back button only for Both Lock Type
                     if lockType == .both && isBiometricAvailable {
                         Button(action: {
                             pin = ""
@@ -140,15 +139,11 @@ struct LockView<Content: View>: View {
                     }
                 }
             
-            /// Adding Wiggling Animation for Wrong Password With Keyframe Animator
             HStack(spacing: 10) {
-                /// Update 4 to 6: If you need a 6 digit Pin
                 ForEach(0..<4, id: \.self) { index in
                     RoundedRectangle(cornerRadius: 10)
                         .frame(width: 50, height: 55)
-                        /// Showing Pin at each box with the help of Index
                         .overlay {
-                            /// Safe Check
                             if pin.count > index {
                                 let index = pin.index(pin.startIndex, offsetBy: index)
                                 let string = String(pin[index])
@@ -180,14 +175,10 @@ struct LockView<Content: View>: View {
             })
             .frame(maxHeight: .infinity)
             
-            /// Custom Number Pad
             GeometryReader { _ in
                 LazyVGrid(columns: Array(repeating: GridItem(), count: 3), content: {
                     ForEach(1...9, id: \.self) { number in
                         Button(action: {
-                            /// Adding Number to Pin
-                            /// Max Limit - 4
-                            /// Update 4 to 6: If you need a 6 digit Pin
                             if pin.count < 4 {
                                 pin.append("\(number)")
                             }
@@ -201,7 +192,6 @@ struct LockView<Content: View>: View {
                         .tint(.white)
                     }
                     
-                    /// 0 and Back Button
                     Button(action: {
                         if !pin.isEmpty {
                             pin.removeLast()
@@ -216,7 +206,6 @@ struct LockView<Content: View>: View {
                     .tint(.white)
                     
                     Button(action: {
-                        /// Update 4 to 6: If you need a 6 digit Pin
                         if pin.count < 4 {
                             pin.append("0")
                         }
@@ -232,20 +221,15 @@ struct LockView<Content: View>: View {
                 .frame(maxHeight: .infinity, alignment: .bottom)
             }
             .onChange(of: pin) { oldValue, newValue in
-                /// Update 4 to 6: If you need a 6 digit Pin
                 if newValue.count == 4 {
-                    /// Validate Pin
                     if lockPin == pin {
-                        //print("Unlocked")
                         withAnimation(.snappy, completionCriteria: .logicallyComplete) {
                             isUnlocked = true
                         } completion: {
-                            /// Clearing Pin
                             pin = ""
                             noBiometricAccess = !isBiometricAvailable
                         }
                     } else {
-                        //print("Wrong Pin")
                         pin = ""
                         animateField.toggle()
                     }

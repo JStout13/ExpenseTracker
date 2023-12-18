@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-enum Category: String, Equatable, CaseIterable {
+enum Category: String, CaseIterable {
     case income = "Income"
     case expense = "Expense"
-    
-    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }

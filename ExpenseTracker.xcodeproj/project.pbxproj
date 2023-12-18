@@ -7,9 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		70196BD02B2C809F000A3784 /* NewExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 70196BCF2B2C809F000A3784 /* NewExpenseView.swift */; };
-		701B2AB72B2A3A870065BBB8 /* ModelsSchemaV1.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701B2AB62B2A3A870065BBB8 /* ModelsSchemaV1.swift */; };
-		701B2AB92B2A3D870065BBB8 /* DatabaseMigrationPlan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701B2AB82B2A3D870065BBB8 /* DatabaseMigrationPlan.swift */; };
+		7016033F2B30DFC90089CFB3 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7016033E2B30DFC90089CFB3 /* Transaction.swift */; };
+		701603412B30E0B90089CFB3 /* FilterTransactionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701603402B30E0B90089CFB3 /* FilterTransactionsView.swift */; };
+		701603432B30E15D0089CFB3 /* TransactionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 701603422B30E15D0089CFB3 /* TransactionView.swift */; };
 		703BD9122B27D63100C94EA9 /* ExpenseTrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703BD9112B27D63100C94EA9 /* ExpenseTrackerApp.swift */; };
 		703BD9142B27D63100C94EA9 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 703BD9132B27D63100C94EA9 /* ContentView.swift */; };
 		703BD9162B27D63300C94EA9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 703BD9152B27D63300C94EA9 /* Assets.xcassets */; };
@@ -34,9 +34,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		70196BCF2B2C809F000A3784 /* NewExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewExpenseView.swift; sourceTree = "<group>"; };
-		701B2AB62B2A3A870065BBB8 /* ModelsSchemaV1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelsSchemaV1.swift; sourceTree = "<group>"; };
-		701B2AB82B2A3D870065BBB8 /* DatabaseMigrationPlan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseMigrationPlan.swift; sourceTree = "<group>"; };
+		7016033E2B30DFC90089CFB3 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
+		701603402B30E0B90089CFB3 /* FilterTransactionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterTransactionsView.swift; sourceTree = "<group>"; };
+		701603422B30E15D0089CFB3 /* TransactionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionView.swift; sourceTree = "<group>"; };
 		703BD90E2B27D63100C94EA9 /* ExpenseTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExpenseTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		703BD9112B27D63100C94EA9 /* ExpenseTrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTrackerApp.swift; sourceTree = "<group>"; };
 		703BD9132B27D63100C94EA9 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,11 +113,10 @@
 			isa = PBXGroup;
 			children = (
 				703BD9132B27D63100C94EA9 /* ContentView.swift */,
-				703BD9212B27D68C00C94EA9 /* IntroView.swift */,
-				7046B4942B293E7E0099EC76 /* LockView.swift */,
-				70196BCF2B2C809F000A3784 /* NewExpenseView.swift */,
 				703BD9322B27E1BD00C94EA9 /* Helpers */,
 				703BD93B2B27FBED00C94EA9 /* TabViews */,
+				703BD9212B27D68C00C94EA9 /* IntroView.swift */,
+				701603422B30E15D0089CFB3 /* TransactionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -127,8 +126,8 @@
 			children = (
 				703BD9262B27DB4100C94EA9 /* Tab.swift */,
 				703BD9282B27DED200C94EA9 /* Category.swift */,
+				7016033E2B30DFC90089CFB3 /* Transaction.swift */,
 				703BD9302B27E12200C94EA9 /* TintColor.swift */,
-				701B2AB62B2A3A870065BBB8 /* ModelsSchemaV1.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -137,7 +136,6 @@
 			isa = PBXGroup;
 			children = (
 				703BD9242B27D83D00C94EA9 /* Constants.swift */,
-				701B2AB82B2A3D870065BBB8 /* DatabaseMigrationPlan.swift */,
 				703BD92C2B27E02100C94EA9 /* View+Extensions.swift */,
 				703BD92E2B27E04600C94EA9 /* Date+Extension.swift */,
 				7046B4962B2940F20099EC76 /* Enums.swift */,
@@ -148,10 +146,12 @@
 		703BD9322B27E1BD00C94EA9 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				7046B4942B293E7E0099EC76 /* LockView.swift */,
 				703BD9332B27E1CC00C94EA9 /* SwipeAction.swift */,
 				703BD9352B27E8FC00C94EA9 /* CardView.swift */,
 				703BD9372B27EDDA00C94EA9 /* TransactionCardView.swift */,
 				703BD9392B27FBCC00C94EA9 /* DateFilterView.swift */,
+				701603402B30E0B90089CFB3 /* FilterTransactionsView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -237,10 +237,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7016033F2B30DFC90089CFB3 /* Transaction.swift in Sources */,
 				703BD9142B27D63100C94EA9 /* ContentView.swift in Sources */,
 				703BD9122B27D63100C94EA9 /* ExpenseTrackerApp.swift in Sources */,
+				701603432B30E15D0089CFB3 /* TransactionView.swift in Sources */,
 				7046B4972B2940F20099EC76 /* Enums.swift in Sources */,
 				703BD9272B27DB4100C94EA9 /* Tab.swift in Sources */,
+				701603412B30E0B90089CFB3 /* FilterTransactionsView.swift in Sources */,
 				703BD93D2B27FC0000C94EA9 /* RecentsView.swift in Sources */,
 				703BD9222B27D68C00C94EA9 /* IntroView.swift in Sources */,
 				703BD9432B27FC2400C94EA9 /* SettingsView.swift in Sources */,
@@ -248,8 +251,6 @@
 				703BD9382B27EDDA00C94EA9 /* TransactionCardView.swift in Sources */,
 				703BD9252B27D83D00C94EA9 /* Constants.swift in Sources */,
 				703BD9342B27E1CC00C94EA9 /* SwipeAction.swift in Sources */,
-				701B2AB92B2A3D870065BBB8 /* DatabaseMigrationPlan.swift in Sources */,
-				70196BD02B2C809F000A3784 /* NewExpenseView.swift in Sources */,
 				703BD92D2B27E02200C94EA9 /* View+Extensions.swift in Sources */,
 				703BD9292B27DED200C94EA9 /* Category.swift in Sources */,
 				703BD9312B27E12200C94EA9 /* TintColor.swift in Sources */,
@@ -258,7 +259,6 @@
 				703BD93F2B27FC0900C94EA9 /* SearchView.swift in Sources */,
 				703BD93A2B27FBCC00C94EA9 /* DateFilterView.swift in Sources */,
 				703BD92F2B27E04600C94EA9 /* Date+Extension.swift in Sources */,
-				701B2AB72B2A3A870065BBB8 /* ModelsSchemaV1.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

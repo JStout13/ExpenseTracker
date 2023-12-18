@@ -1,23 +1,25 @@
 //
-//  NewExpenseView.swift
+//  TransactionView.swift
 //  ExpenseTracker
 //
-//  Created by Jason Stout on 12/15/23.
+//  Created by Jason Stout on 12/18/23.
 //
 
 import SwiftUI
 
-struct NewExpenseView: View {
+struct TransactionView: View {
+    /// Env Properties
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     var editTransaction: Transaction?
+    /// View Properties
     @State private var title: String = ""
     @State private var remarks: String = ""
     @State private var amount: Double = .zero
     @State private var dateAdded: Date = .now
     @State private var category: Category = .expense
+    /// Random Tint
     @State var tint: TintColor = tints.randomElement()!
-    
     var body: some View {
         ScrollView(.vertical) {
             VStack(spacing: 15) {
@@ -26,6 +28,7 @@ struct NewExpenseView: View {
                     .foregroundStyle(.gray)
                     .hSpacing(.leading)
                 
+                /// Preview Transaction Card View
                 TransactionCardView(transaction: .init(
                     title: title.isEmpty ? "Title" : title,
                     remarks: remarks.isEmpty ? "Remarks" : remarks,
@@ -39,11 +42,12 @@ struct NewExpenseView: View {
                 
                 CustomSection("Remarks", "Apple Product!", value: $remarks)
                 
-                VStack(alignment: .leading, spacing: 10) {
+                /// Amount & Category Check Box
+                VStack(alignment: .leading, spacing: 10, content: {
                     Text("Amount & Category")
                         .font(.caption)
                         .foregroundStyle(.gray)
-                        .hSpacing()
+                        .hSpacing(.leading)
                     
                     HStack(spacing: 15) {
                         HStack(spacing: 4) {
@@ -58,11 +62,13 @@ struct NewExpenseView: View {
                         .background(.background, in: .rect(cornerRadius: 10))
                         .frame(maxWidth: 130)
                         
+                        /// Custom Check Box
                         CategoryCheckBox()
                     }
-                }
+                })
                 
-                VStack(alignment: .leading, spacing: 10) {
+                /// Date Picker
+                VStack(alignment: .leading, spacing: 10, content: {
                     Text("Date")
                         .font(.caption)
                         .foregroundStyle(.gray)
@@ -73,7 +79,7 @@ struct NewExpenseView: View {
                         .padding(.horizontal, 15)
                         .padding(.vertical, 12)
                         .background(.background, in: .rect(cornerRadius: 10))
-                }
+                })
             }
             .padding(15)
         }
@@ -86,6 +92,7 @@ struct NewExpenseView: View {
         })
         .onAppear(perform: {
             if let editTransaction {
+                /// Load All Existing Data from the Transaction
                 title = editTransaction.title
                 remarks = editTransaction.remarks
                 dateAdded = editTransaction.dateAdded
@@ -100,7 +107,9 @@ struct NewExpenseView: View {
         })
     }
     
+    /// Saving Data
     func save() {
+        /// Saving Item to SwiftData
         if editTransaction != nil {
             editTransaction?.title = title
             editTransaction?.remarks = remarks
@@ -112,24 +121,26 @@ struct NewExpenseView: View {
             context.insert(transaction)
         }
         
+        /// Dismissing View
         dismiss()
     }
     
     @ViewBuilder
     func CustomSection(_ title: String, _ hint: String, value: Binding<String>) -> some View {
-        VStack(alignment: .leading, spacing: 10) {
+        VStack(alignment: .leading, spacing: 10, content: {
             Text(title)
                 .font(.caption)
                 .foregroundStyle(.gray)
-                .hSpacing()
+                .hSpacing(.leading)
             
             TextField(hint, text: value)
                 .padding(.horizontal, 15)
                 .padding(.vertical, 12)
                 .background(.background, in: .rect(cornerRadius: 10))
-        }
+        })
     }
     
+    /// Custom CheckBox
     @ViewBuilder
     func CategoryCheckBox() -> some View {
         HStack(spacing: 10) {
@@ -162,6 +173,7 @@ struct NewExpenseView: View {
         .background(.background, in: .rect(cornerRadius: 10))
     }
     
+    /// Number Formatter
     var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -172,5 +184,8 @@ struct NewExpenseView: View {
 }
 
 #Preview {
-    NewExpenseView()
+    NavigationStack {
+        TransactionView()
+    }
 }
+

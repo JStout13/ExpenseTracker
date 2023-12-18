@@ -10,8 +10,6 @@ import SwiftData
 
 let appTint: Color = .blue
 
-typealias Transaction = ModelsSchemaV1.Transaction
-
 /// Sample Transactions for UI Building
 var sampleTransactions: [Transaction] = [
     .init(title: "Magic Keyboard", remarks: "Apple Product", amount: 129, dateAdded: .now, category: .expense, tintColor: tints.randomElement()!),
